@@ -31,7 +31,9 @@ class TodoController extends Controller
 
     public function show(string $id)
     {
-        return "show todo";
+        $data = TodoModel::select('*')->find($id);
+        // $data = 'salam';
+        return view('todo.show', ['data'=> $data]);
     }
 
     public function edit(string $id)

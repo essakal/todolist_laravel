@@ -20,8 +20,9 @@ Route::get('/', function () {
 
 // Route::resource('todo', TodoController::class);
 
-Route::group(["prefix"=>"todo"], function(){
+Route::group(["prefix" => "todo"], function () {
     Route::get('/index', [TodoController::class, 'index'])->name('todo.index');
+    Route::get('/show/{id}', [TodoController::class, 'show'])->name('todo.show');
     Route::get('/create', [TodoController::class, 'create'])->name('todo.create');
     Route::post('/store', [TodoController::class, 'store'])->name('todo.store');
     Route::get('/edit/{id}', [TodoController::class, 'edit'])->name('todo.edit');
