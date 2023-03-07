@@ -10,7 +10,8 @@ class TodoController extends Controller
 {
     public function index()
     {
-        return "index todo";
+        $data = TodoModel::select('*')->get();
+        return view('todo.index', ['data'=>$data]);
     }
 
     public function create()
