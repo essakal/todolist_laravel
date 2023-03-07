@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTodoRequest;
+use App\Http\Requests\UpdateTodoRequest;
 use App\Models\TodoModel;
 use Illuminate\Http\Request;
 
@@ -35,12 +36,16 @@ class TodoController extends Controller
 
     public function edit(string $id)
     {
-        //
+        $data = TodoModel::select('*')->find($id);
+        return view("todo.edit", ['data'=>$data]);
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateTodoRequest $request, string $id)
     {
-        //
+        $data['todo'] = $request->todo;
+        $data['updated_at'] = date('Y-m-d H:i:s');
+        TodoModel::where('id', $id)->update($data);
+        return redirect()->route("todo.index");
     }
 
     public function destroy(string $id)
