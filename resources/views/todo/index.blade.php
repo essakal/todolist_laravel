@@ -9,7 +9,7 @@
                     <td>{{ $d->todo }}</td>
                     <td>{{ $d->created_at }}</td>
                     <td><a href="{{ route("todo.edit", $d->id) }}">edit</a></td>
-                    <td><a href="#">delete</a></td>
+                    <td><a href="{{ route("todo.delete", $d->id) }}">delete</a></td>
                     <td><a href="#">show</a></td>
                 </tr>
         @endforeach

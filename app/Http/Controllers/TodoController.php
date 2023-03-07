@@ -50,6 +50,7 @@ class TodoController extends Controller
 
     public function destroy(string $id)
     {
-        //
+        TodoModel::where('id', $id)->delete();
+        return redirect()->route('todo.index');
     }
 }
